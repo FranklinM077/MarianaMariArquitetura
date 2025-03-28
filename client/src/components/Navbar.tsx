@@ -25,10 +25,32 @@ export default function Navbar() {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0 flex items-center">
-              <span className="text-primary font-bold text-xl">LaunchPad</span>
+              <span className="text-primary font-bold text-xl">Mariana Maria</span>
+              <span className="ml-2 text-gray-500 text-sm hidden md:inline">Arquiteta e Designer de Interiores</span>
             </Link>
           </div>
-          <div className="hidden sm:ml-6 sm:flex sm:items-center space-x-8">
+          <div className="hidden sm:ml-6 sm:flex sm:items-center space-x-6">
+            <Button 
+              variant="ghost" 
+              onClick={() => scrollToSection("about")}
+              className="text-gray-600 hover:text-primary transition px-3 py-2 text-sm font-medium"
+            >
+              Sobre
+            </Button>
+            <Button 
+              variant="ghost" 
+              onClick={() => scrollToSection("portfolio")}
+              className="text-gray-600 hover:text-primary transition px-3 py-2 text-sm font-medium"
+            >
+              Portfólio
+            </Button>
+            <Button 
+              variant="ghost" 
+              onClick={() => scrollToSection("services")}
+              className="text-gray-600 hover:text-primary transition px-3 py-2 text-sm font-medium"
+            >
+              Serviços
+            </Button>
             <Button 
               variant="ghost" 
               onClick={() => scrollToSection("features")}
@@ -37,24 +59,10 @@ export default function Navbar() {
               Features
             </Button>
             <Button 
-              variant="ghost" 
-              onClick={() => scrollToSection("about")}
-              className="text-gray-600 hover:text-primary transition px-3 py-2 text-sm font-medium"
-            >
-              About
-            </Button>
-            <Button 
-              variant="ghost" 
-              onClick={() => scrollToSection("faq")}
-              className="text-gray-600 hover:text-primary transition px-3 py-2 text-sm font-medium"
-            >
-              FAQ
-            </Button>
-            <Button 
               onClick={() => scrollToSection("waitlist")}
               className="bg-primary text-white hover:bg-primary/90 transition px-4 py-2 rounded-md text-sm font-medium"
             >
-              Join Waitlist
+              Contato
             </Button>
           </div>
           <div className="flex items-center sm:hidden">
@@ -89,30 +97,37 @@ export default function Navbar() {
           <div className="px-2 pt-2 pb-3 space-y-1">
             <Button
               variant="ghost"
+              onClick={() => scrollToSection("about")}
+              className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-primary hover:bg-gray-50"
+            >
+              Sobre
+            </Button>
+            <Button
+              variant="ghost"
+              onClick={() => scrollToSection("portfolio")}
+              className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-primary hover:bg-gray-50"
+            >
+              Portfólio
+            </Button>
+            <Button
+              variant="ghost"
+              onClick={() => scrollToSection("services")}
+              className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-primary hover:bg-gray-50"
+            >
+              Serviços
+            </Button>
+            <Button
+              variant="ghost"
               onClick={() => scrollToSection("features")}
               className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-primary hover:bg-gray-50"
             >
               Features
             </Button>
             <Button
-              variant="ghost"
-              onClick={() => scrollToSection("about")}
-              className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-primary hover:bg-gray-50"
-            >
-              About
-            </Button>
-            <Button
-              variant="ghost"
-              onClick={() => scrollToSection("faq")}
-              className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-primary hover:bg-gray-50"
-            >
-              FAQ
-            </Button>
-            <Button
               onClick={() => scrollToSection("waitlist")}
               className="block w-full px-3 py-2 rounded-md text-base font-medium bg-primary text-white hover:bg-primary/90"
             >
-              Join Waitlist
+              Contato
             </Button>
           </div>
         </div>

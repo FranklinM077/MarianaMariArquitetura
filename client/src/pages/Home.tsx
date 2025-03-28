@@ -3,6 +3,8 @@ import HeroSection from "@/components/HeroSection";
 import WaitlistSection from "@/components/WaitlistSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import AboutSection from "@/components/AboutSection";
+import PortfolioSection from "@/components/PortfolioSection";
+import ServicesSection from "@/components/ServicesSection";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
@@ -13,8 +15,10 @@ export default function Home() {
       <Navbar />
       <main>
         <HeroSection />
-        <FeaturesSection />
         <AboutSection />
+        <PortfolioSection />
+        <ServicesSection />
+        <FeaturesSection />
         <WaitlistSection />
         <FAQSection />
         <CTASection />
