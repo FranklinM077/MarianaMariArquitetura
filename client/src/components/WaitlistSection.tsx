@@ -2,7 +2,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
-import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -85,115 +84,55 @@ export default function WaitlistSection() {
   }
 
   return (
-    <section id="waitlist" className="py-16 bg-primary/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          className="lg:text-center mb-10"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="text-base text-primary font-semibold tracking-wide uppercase">Contato</h2>
-          <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-            Vamos Trabalhar Juntos
-          </p>
-          <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-            Entre em contato para discutirmos seu projeto e transformarmos suas ideias em realidade.
-          </p>
-        </motion.div>
+    <section id="waitlist" className="py-24 bg-white">
+      <div className="max-w-6xl mx-auto px-6 sm:px-10">
+        <div className="mb-16">
+          <h2 className="text-3xl font-light uppercase tracking-wide text-black mb-2">Contato</h2>
+          <div className="w-16 h-px bg-black"></div>
+        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+          {/* Formulário de contato */}
           <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="lg:col-span-7"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-white rounded-lg shadow-xl overflow-hidden"
+            transition={{ duration: 0.5 }}
           >
-            <div className="px-6 py-8 sm:p-10">
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <FormField
+                  control={form.control}
+                  name="fullName"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-sm uppercase tracking-wider font-light text-gray-500">Nome Completo</FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="Maria Silva" 
+                          {...field}
+                          className="border-gray-300 focus:border-black focus:ring-0 rounded-none h-10 font-light" 
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <FormField
                     control={form.control}
-                    name="fullName"
+                    name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Nome Completo</FormLabel>
+                        <FormLabel className="text-sm uppercase tracking-wider font-light text-gray-500">Email</FormLabel>
                         <FormControl>
-                          <Input placeholder="Maria Silva" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Email</FormLabel>
-                          <FormControl>
-                            <Input placeholder="seu@email.com" type="email" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="phone"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Telefone</FormLabel>
-                          <FormControl>
-                            <Input placeholder="(11) 99999-9999" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  
-                  <FormField
-                    control={form.control}
-                    name="projectType"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Tipo de Projeto</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Selecione o tipo de projeto" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="residential">Residencial</SelectItem>
-                            <SelectItem value="commercial">Comercial</SelectItem>
-                            <SelectItem value="interior">Design de Interiores</SelectItem>
-                            <SelectItem value="consulting">Consultoria</SelectItem>
-                            <SelectItem value="other">Outro</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Mensagem</FormLabel>
-                        <FormControl>
-                          <Textarea 
-                            placeholder="Descreva seu projeto e o que você está buscando..." 
-                            className="h-32 resize-none"
-                            {...field} 
+                          <Input 
+                            placeholder="seu@email.com" 
+                            type="email" 
+                            {...field}
+                            className="border-gray-300 focus:border-black focus:ring-0 rounded-none h-10 font-light" 
                           />
                         </FormControl>
                         <FormMessage />
@@ -203,106 +142,171 @@ export default function WaitlistSection() {
                   
                   <FormField
                     control={form.control}
-                    name="agreeToTerms"
+                    name="phone"
                     render={({ field }) => (
-                      <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                      <FormItem>
+                        <FormLabel className="text-sm uppercase tracking-wider font-light text-gray-500">Telefone</FormLabel>
                         <FormControl>
-                          <Checkbox
-                            checked={field.value === "true"}
-                            onCheckedChange={(checked) => {
-                              field.onChange(checked ? "true" : undefined);
-                            }}
+                          <Input 
+                            placeholder="(11) 99999-9999" 
+                            {...field}
+                            className="border-gray-300 focus:border-black focus:ring-0 rounded-none h-10 font-light" 
                           />
                         </FormControl>
-                        <div className="space-y-1 leading-none">
-                          <FormLabel>
-                            Concordo com a <a href="#" className="text-primary hover:text-primary/80">Política de Privacidade</a>
-                          </FormLabel>
-                          <FormMessage />
-                        </div>
+                        <FormMessage />
                       </FormItem>
                     )}
                   />
-                  
-                  <Button 
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full h-10 flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary/90 transition-colors duration-200"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Enviando...
-                      </>
-                    ) : (
-                      "Enviar Mensagem"
-                    )}
-                  </Button>
-                </form>
-              </Form>
-            </div>
+                </div>
+                
+                <FormField
+                  control={form.control}
+                  name="projectType"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-sm uppercase tracking-wider font-light text-gray-500">Tipo de Projeto</FormLabel>
+                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <FormControl>
+                          <SelectTrigger className="border-gray-300 focus:border-black focus:ring-0 rounded-none h-10 font-light">
+                            <SelectValue placeholder="Selecione o tipo de projeto" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="residential">Residencial</SelectItem>
+                          <SelectItem value="commercial">Comercial</SelectItem>
+                          <SelectItem value="interior">Design de Interiores</SelectItem>
+                          <SelectItem value="consulting">Consultoria</SelectItem>
+                          <SelectItem value="other">Outro</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-sm uppercase tracking-wider font-light text-gray-500">Mensagem</FormLabel>
+                      <FormControl>
+                        <Textarea 
+                          placeholder="Descreva seu projeto e o que você está buscando..." 
+                          className="min-h-40 resize-none border-gray-300 focus:border-black focus:ring-0 rounded-none font-light"
+                          {...field} 
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="agreeToTerms"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-row items-center space-x-3 space-y-0">
+                      <FormControl>
+                        <Checkbox
+                          checked={field.value === "true"}
+                          onCheckedChange={(checked) => {
+                            field.onChange(checked ? "true" : undefined);
+                          }}
+                          className="rounded-none data-[state=checked]:bg-black data-[state=checked]:border-black"
+                        />
+                      </FormControl>
+                      <div className="leading-none">
+                        <FormLabel className="font-light text-gray-600">
+                          Concordo com a <a href="#" className="text-black underline hover:no-underline">Política de Privacidade</a>
+                        </FormLabel>
+                        <FormMessage />
+                      </div>
+                    </FormItem>
+                  )}
+                />
+                
+                <button 
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="px-8 py-3 border border-black text-white bg-black uppercase text-sm tracking-wider font-light hover:bg-white hover:text-black transition-colors flex items-center justify-center disabled:opacity-70"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Enviando...
+                    </>
+                  ) : (
+                    "Enviar Mensagem"
+                  )}
+                </button>
+              </form>
+            </Form>
           </motion.div>
           
+          {/* Informações de contato */}
           <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="lg:col-span-5"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col justify-center space-y-8 px-6 py-8 sm:p-10"
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Informações de Contato</h3>
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <Mail className="h-5 w-5 text-primary mr-3 mt-0.5" />
-                  <div>
-                    <p className="font-medium">Email</p>
-                    <p className="text-gray-600">contato@marianamaria.com</p>
+            <div className="space-y-10">
+              <div>
+                <h3 className="text-lg font-light text-black mb-6">Informações de Contato</h3>
+                <div className="space-y-6">
+                  <div className="flex items-start">
+                    <Mail className="h-5 w-5 text-black mr-4 mt-0.5" />
+                    <div>
+                      <p className="font-light text-gray-800">Email</p>
+                      <p className="text-gray-600 font-light mt-1">contato@marianamaria.com</p>
+                    </div>
                   </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <Phone className="h-5 w-5 text-primary mr-3 mt-0.5" />
-                  <div>
-                    <p className="font-medium">Telefone</p>
-                    <p className="text-gray-600">(11) 99999-9999</p>
+                  
+                  <div className="flex items-start">
+                    <Phone className="h-5 w-5 text-black mr-4 mt-0.5" />
+                    <div>
+                      <p className="font-light text-gray-800">Telefone</p>
+                      <p className="text-gray-600 font-light mt-1">(11) 99999-9999</p>
+                    </div>
                   </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <MapPin className="h-5 w-5 text-primary mr-3 mt-0.5" />
-                  <div>
-                    <p className="font-medium">Endereço</p>
-                    <p className="text-gray-600">
-                      Av. Paulista, 1000<br />
-                      São Paulo - SP, 01310-100
-                    </p>
+                  
+                  <div className="flex items-start">
+                    <MapPin className="h-5 w-5 text-black mr-4 mt-0.5" />
+                    <div>
+                      <p className="font-light text-gray-800">Endereço</p>
+                      <p className="text-gray-600 font-light mt-1">
+                        Av. Paulista, 1000<br />
+                        São Paulo - SP, 01310-100
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Horário de Atendimento</h3>
-              <div className="space-y-2">
-                <p className="text-gray-600">Segunda a Sexta: 9h às 18h</p>
-                <p className="text-gray-600">Sábado: 9h às 13h</p>
-                <p className="text-gray-600">Domingo: Fechado</p>
+              
+              <div>
+                <h3 className="text-lg font-light text-black mb-6">Horário de Atendimento</h3>
+                <div className="space-y-3 font-light text-gray-600">
+                  <p>Segunda a Sexta: 9h às 18h</p>
+                  <p>Sábado: 9h às 13h</p>
+                  <p>Domingo: Fechado</p>
+                </div>
               </div>
-            </div>
-            
-            <div className="pt-4">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Redes Sociais</h3>
-              <div className="flex space-x-4">
-                <a href="#" className="text-gray-600 hover:text-primary transition-colors">
-                  Instagram
-                </a>
-                <a href="#" className="text-gray-600 hover:text-primary transition-colors">
-                  LinkedIn
-                </a>
-                <a href="#" className="text-gray-600 hover:text-primary transition-colors">
-                  Pinterest
-                </a>
+              
+              <div>
+                <h3 className="text-lg font-light text-black mb-6">Redes Sociais</h3>
+                <div className="flex space-x-6">
+                  <a href="#" className="text-gray-600 font-light hover:text-black transition-colors uppercase text-sm tracking-wider">
+                    Instagram
+                  </a>
+                  <a href="#" className="text-gray-600 font-light hover:text-black transition-colors uppercase text-sm tracking-wider">
+                    LinkedIn
+                  </a>
+                  <a href="#" className="text-gray-600 font-light hover:text-black transition-colors uppercase text-sm tracking-wider">
+                    Pinterest
+                  </a>
+                </div>
               </div>
             </div>
           </motion.div>
