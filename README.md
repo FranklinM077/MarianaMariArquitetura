@@ -48,5 +48,5 @@ Se desejar contribuir, faça um fork do repositório e abra um pull request com 
 
 ## Licença
 
-Este projeto está sob a licença MIT. Sinta-se à vontade para usar e modificar conforme necessário.
+Este projeto está sob a licença MIT. Sinta-se à vontade para usar e modificar conforme necessário
 
